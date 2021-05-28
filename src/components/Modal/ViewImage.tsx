@@ -24,10 +24,12 @@ export function ModalViewImage({
       <ModalOverlay />
       <ModalContent bgColor="pGray.900">
         <ModalBody px={60}>
-          <Image src={imgUrl} alt="Imagem" />
+          <Image src={imgUrl} width="full" alt="Imagem" />
         </ModalBody>
-        <ModalFooter>
-          <Link href={imgUrl}>Abrir original</Link>
+        <ModalFooter py="2">
+          <Link href={imgUrl} mr="auto">
+            Abrir original
+          </Link>
         </ModalFooter>
       </ModalContent>
     </Modal>

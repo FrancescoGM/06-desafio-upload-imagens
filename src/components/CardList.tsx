@@ -29,11 +29,10 @@ export function CardList({ cards }: CardsProps): JSX.Element {
     setSelectedImage('');
     onClose();
   }
-  // TODO FUNCTION HANDLE VIEW IMAGE
 
   return (
     <>
-      <SimpleGrid spacing="40px" maxW={1120}>
+      <SimpleGrid spacing="40px" maxW={1120} minChildWidth="293px">
         {cards.map(card => (
           <Card data={card} viewImage={viewImage} />
         ))}

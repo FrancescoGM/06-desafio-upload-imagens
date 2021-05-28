@@ -50,7 +50,7 @@ export default function Home(): JSX.Element {
 
   const formattedData = useMemo(() => {
     if (data) {
-      return data.pages[0].data || [];
+      return data.pages.reduce((acc, list) => [...acc, ...list.data], []);
     }
     return [];
   }, [data]);
@@ -68,7 +68,11 @@ export default function Home(): JSX.Element {
 
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
-        {/* TODO RENDER LOAD MORE BUTTON IF DATA HAS NEXT PAGE */}
+        {hasNextPage && (
+          <Button mt="10" onClick={() => fetchNextPage()}>
+            {isFetchingNextPage ? 'Carregando...' : 'Carregar mais'}
+          </Button>
+        )}
       </Box>
     </>
   );

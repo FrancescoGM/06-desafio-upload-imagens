@@ -38,7 +38,7 @@ export interface FileInputProps {
   localImageUrl: string;
   setLocalImageUrl: Dispatch<SetStateAction<string>>;
   setError: UseFormSetError<FieldValues>;
-  onChange: (
+  onChange?: (
     event: React.ChangeEvent<HTMLInputElement>
   ) => Promise<boolean | void>;
   trigger: UseFormTrigger<FieldValues>;
@@ -79,7 +79,7 @@ const FileInputBase: ForwardRefRenderFunction<
       setError('image', null);
       setIsSending(true);
 
-      await onChange(event);
+      if (onChange) await onChange(event);
       trigger('image');
 
       const formData = new FormData();
